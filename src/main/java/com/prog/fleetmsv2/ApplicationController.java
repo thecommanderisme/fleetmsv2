@@ -35,4 +35,7 @@ public class ApplicationController {
 	
 	@GetMapping("/payroll")
 	public String payroll() { return "/payroll/index"; }
+	
+	@GetMapping("/signup")
+	public String signup() { return "/signup"; }
 }
