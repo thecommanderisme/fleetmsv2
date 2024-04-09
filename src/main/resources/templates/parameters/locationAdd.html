@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body>
+	
+<div layout:fragment="content">
+	 <form th:action="@{/parameters/locations}" method="post">
+	     <div class="row h-100 align-items-center justify-content-center" style="min-height: 90vh;">
+			
+				<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Add New Location Record</h6>
+                            <div class="form-floating mb-3">
+                                <input name="id" type="text" class="form-control" id="idAdd"
+                                    placeholder="id">
+                                <label for="floatingInput">Id</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input name="description" type="text" class="form-control" id="descriptionAdd"
+                                    placeholder="description">
+                                <label for="floatingInput">Description</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="city" type="text" class="form-control" id="cityAdd"
+                                    placeholder="city">
+                                <label for="floatingInput">City</label>
+                            </div>
+                      
+                            
+                            <div class="form-floating mb-3">
+                                <input name="address" type="text" class="form-control" id="addressAdd"
+                                    placeholder="Address">
+                                <label for="floatingInput">Address</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+								<select class="form-control" id="ddlCountryAdd" name="countryid">
+									<option th:value="${null}">-SELECT-</option>
+									<option th:each="country : ${countries}"
+		                            	th:value="${country.id}"
+		                            	th:text="${country.description}">
+		                            </option>
+								</select>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+								<select class="form-control" id="ddlStateAdd" name="stateid">
+									<option th:value="${null}">-SELECT-</option>
+		                            <option th:each="state : ${states}"
+		                                    th:value="${state.id}"
+		                                    th:text="${state.name}">
+		                            </option>
+								</select>
+                            </div>
+                            
+							<div class="form-floating mb-3">
+                                <input name="details" type="text" class="form-control" id="detailsAdd"
+                                    placeholder="Details">
+                                <label for="floatingInput">Details</label>
+                            </div>
+                         
+                             <div class="m-n2">
+								<button type="submit" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Save</button>
+								<a href="/parameters/locations" type="button" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Exit</a>
+							
+							</div> 
+                        </div>
+                    </div>
+                   
+               </div>
+     </form>
+
+</div>
+
+<th:block layout:fragment="script">
+    <script language="JavaScript">
+        $('document').ready(function () { // Line 1
+
+            $('#ddlCountryAdd').on('change',function () { // Line 2
+                console.log("I got here!")
+
+                $('#ddlStateAdd').empty().append('<option value="null">-SELECT-</option>'); // Line 3
+
+                var countryid = $(this).val(); //Line 4
+
+                var href = "http://localhost:8080/parameters/country/" + countryid //Line 5
+
+                $.get(href, function (country, status) { // Line 6
+
+                    var states = country.states; // Line 7
+                    for (var i = 0; i <= states.length-1; i++) { // Line 8
+                    	$('#ddlStateAdd').append('<option value="' + states[i].id + '">' + states[i].name + '</option>'); // Line 9
+                    }
+                })
+            })
+
+        })
+        //Line 2 – The change event executes a function when the first select is clicked (ddlCountryAdd)
+		//Line 3 – Clear existing content of the existing content of the ddlState list
+		//Line 4 – Retrieve the selected country id
+		//Line 5 – The url to retrieve a country by id
+		//Line 6 – Make a get request to the url to retrieve the selected country details
+		//Line 7 – Get the states attribute of the selected country
+		//Line 8 – Loop through the list of states
+		//Line 9 – Set the dropdownlist values and text using the state data
+    </script>
+</th:block>
+
+</body>	
+
+</html>

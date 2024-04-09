@@ -12,8 +12,8 @@ public class ApplicationController {
 	@GetMapping("/_layout")
 	public String layout() { return "_layout"; }
 	
-	@GetMapping("/table-basic")
-	public String tableBasic() { return "table-basic"; }
+	@GetMapping("/table")
+	public String tableBasic() { return "table"; }
 	
 	@GetMapping("/index2")
 	public String index2() { return "index2"; }
@@ -35,4 +35,7 @@ public class ApplicationController {
 	
 	@GetMapping("/payroll")
 	public String payroll() { return "/payroll/index"; }
+	
+	@GetMapping("/signup")
+	public String signup() { return "/signup"; }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body>
+	
+<div layout:fragment="content">
+	 <form method="put">
+	     <div class="row h-100 align-items-center justify-content-center" style="min-height: 90vh;">
+			
+				<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Country Record</h6>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="description" type="description" class="form-control" id="floatingInput"
+                                    placeholder="description" th:value="${country.description}" readonly>
+                                <label for="floatingInput">Description</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input name="capital" type="capital" class="form-control" id="floatingInput"
+                                    placeholder="capital" th:value="${country.capital}" readonly>
+                                <label for="floatingInput">Capital</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="nationality" type="Nationality" class="form-control" id="floatingInput"
+                                    placeholder="Nationality" th:value="${country.nationality}" readonly>
+                                <label for="floatingInput">Nationality</label>
+                            </div>
+                      
+                            
+                            <div class="form-floating mb-3">
+                                <input name="continent" type="Continent" class="form-control" id="floatingInput"
+                                    placeholder="Continent" th:value="${country.continent}" readonly>
+                                <label for="floatingInput">Continent</label>
+                            </div>
+                            
+							<div class="form-floating mb-3">
+                                <input name="code" type="Code" class="form-control" id="floatingInput"
+                                    placeholder="Code" th:value="${country.code}" readonly>
+                                <label for="floatingInput">Code</label>
+                            </div>
+                         
+                             <div class="m-n2">
+								<button type="submit" disabled class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Save</button>
+								<a href="/parameters/countries" type="button" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Exit</a>
+							
+							</div> 
+                        </div>
+                    </div>
+                   
+               </div>
+     </form>
+
+</div>
+
+</body>	
+
+</html>
