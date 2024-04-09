@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body>
+	
+<div layout:fragment="content">
+	 <form th:action="@{/parameters/states}" method="post">
+	     <div class="row h-100 align-items-center justify-content-center" style="min-height: 90vh;">
+			
+				<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Add New State Record</h6>
+                            <div class="form-floating mb-3">
+								<select class="form-control" id="floatingName" name="countryid">
+									<option>Select Country</option>
+									<option th:each="country: ${countries}"
+											th:value="${country.id}"
+											th:text="${country.description}">
+									</option>
+								</select>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="name" type="name" class="form-control" id="floatingInput"
+                                    placeholder="name">
+                                <label for="floatingInput">Name</label>
+                            </div>
+                         
+                            <div class="form-floating mb-3">
+                                <input name="capital" type="capital" class="form-control" id="floatingInput"
+                                    placeholder="capital">
+                                <label for="floatingInput">Capital</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="code" type="Code" class="form-control" id="floatingInput"
+                                    placeholder="Code">
+                                <label for="floatingInput">Code</label>
+                            </div>
+                         
+                            <div class="form-floating mb-3">
+                                <input name="details" type="Details" class="form-control" id="floatingInput"
+                                    placeholder="Details">
+                                <label for="floatingInput">Details</label>
+                            </div>
+                            
+                            <div class="m-n2">
+								<button type="submit" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Save</button>
+								<a href="/parameters/states" type="button" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Exit</a>
+							
+							</div> 
+                        </div>
+               </div>
+                   
+     	</div>
+     </form>
+
+</div>
+
+</body>	
+
+</html>

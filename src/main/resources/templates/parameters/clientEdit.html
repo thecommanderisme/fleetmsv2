@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+
+<body>
+	
+<div layout:fragment="content">
+	 <form th:action="@{/parameters/clients}" method="post">
+	     <div class="container-fluid pt-4 px-4">
+			 	<header class="panel-heading">
+                   Add New Client Record
+                </header>
+    
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+						<div class="bg-light rounded h-100 p-4">
+							<div class="form-floating mb-3">
+                                <input name="name" type="text" class="form-control" id="txtNameAdd"
+                                    placeholder="Name" th:value="${client.name}">
+                                <label for="floatingInput">Name</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="email" type="text" class="form-control" id="txtEmailAdd"
+                                    placeholder="Email" th:value="${client.email}">
+                                <label for="floatingInput">Email</label>
+                            </div>
+                      
+                            
+                            <div class="form-floating mb-3">
+                                <input name="website" type="text" class="form-control" id="txtWebsiteAdd"
+                                    placeholder="Website" th:value="${client.website}">
+                                <label for="floatingInput">Website</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="address" type="text" class="form-control" id="txtAddressAdd"
+                                    placeholder="Address" th:value="${client.address}">
+                                <label for="floatingInput">Address</label>
+                            </div>
+                          
+                            <div class="form-floating mb-3">
+                                <input name="details" type="text" class="form-control" id="txtDetailsAdd"
+                                    placeholder="Details" th:value="${client.details}">
+                                <label for="floatingInput">Details</label>
+                            </div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-xl-6">
+						<div class="bg-light rounded h-100 p-4">
+							<div class="form-floating mb-3">
+								<select class="form-control" id="ddlCountryAdd" name="countryid">
+									<option th:value="${null}">-SELECT-</option>
+									<option th:each="country : ${countries}"
+		                            	th:value="${country.id}"
+		                            	th:selected="${country.id}==${client.countryid} ? True : False"
+		                            	th:text="${country.description}">
+		                            </option>
+								</select>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+								<select class="form-control" id="ddlStateAdd" name="stateid">
+									<option th:value="${null}">-SELECT-</option>
+		                            <option th:each="state : ${states}"
+		                                    th:value="${state.id}"
+		                                    th:selected="${state.id}==${client.stateid} ? True : False"
+		                                    th:text="${state.name}">
+		                            </option>
+								</select>
+                            </div>
+                            
+							<div class="form-floating mb-3">
+                                <input name="city" type="text" class="form-control" id="txtCityAdd"
+                                    placeholder="City" th:value="${client.city}">
+                                <label for="floatingInput">City</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="phone" type="text" class="form-control" id="txtPhoneAdd"
+                                    placeholder="Phone" th:value="${client.phone}">
+                                <label for="floatingInput">Phone</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input name="mobile" type="text" class="form-control" id="txtMobileAdd"
+                                    placeholder="Mobile" th:value="${client.mobile}">
+                                <label for="floatingInput">Mobile</label>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="m-n2">
+					<button type="submit" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Save</button>
+					<a href="/parameters/clients" type="button" class="btn btn-primary m-2"><i class="fa fa-home me-2"></i>Exit</a>
+				</div> 
+		</div>
+     </form>
+
+</div>
+
+</body>	
+
+</html>
